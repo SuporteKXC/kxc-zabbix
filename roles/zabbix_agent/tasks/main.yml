@@ -82,11 +82,12 @@
     regexp: '^#?ListenPort='
     line: "ListenPort=10050"
 
-- name: Ajustar StartAgents
+- name: Ajustar StartAgents (apenas para Zabbix Agent 1)
   lineinfile:
     path: "{{ zabbix_conf }}"
     regexp: '^#?StartAgents='
     line: "StartAgents=0"
+  when: zabbix_service == "zabbix-agent"
 
 - name: Ajustar ServerActive
   lineinfile:
