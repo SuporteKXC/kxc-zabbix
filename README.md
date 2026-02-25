@@ -18,7 +18,7 @@ sudo apt update && apt install -y git
 ```
 * Para instancias Amazon Linux
 ```bash
-sudo yum update -Y && yum install -y git
+sudo yum update -y && yum install -y git
 ```
 2. Clone o repositório:
 ```bash
