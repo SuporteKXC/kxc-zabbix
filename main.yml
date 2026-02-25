@@ -1,0 +1,8 @@
+---
+- name: Instalar Zabbix Agent local
+  hosts: localhost
+  connection: local
+  become: yes
+
+  roles:
+    - zabbix_agent

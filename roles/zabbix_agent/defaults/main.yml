@@ -1,0 +1,5 @@
+zabbix_version: "7.0"
+
+zabbix_server_dns: "zabbix.kxc.com.br"
+
+cliente_nome: ""
