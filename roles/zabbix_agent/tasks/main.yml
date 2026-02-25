@@ -8,18 +8,24 @@
   set_fact:
     repo_url: >-
       {% if ansible_distribution == "Ubuntu" %}
-        https://repo.zabbix.com/zabbix/{{ zabbix_version }}/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_{{ zabbix_version }}+ubuntu{{ ansible_distribution_version }}_all.deb
+        https://repo.zabbix.com/zabbix/{{ zabbix_version }}/ubuntu/pool/main/z/zabbix-release/zabbix-release_{{ zabbix_version }}-2+ubuntu{{ ansible_distribution_version }}_all.deb
       {% elif ansible_distribution == "Amazon" and ansible_distribution_major_version == "2023" %}
-        https://repo.zabbix.com/zabbix/{{ zabbix_version }}/amazonlinux/2023/x86_64/zabbix-release-latest-{{ zabbix_version }}.amzn2023.noarch.rpm
+        https://repo.zabbix.com/zabbix/{{ zabbix_version }}/amazonlinux/2023/x86_64/zabbix-release-{{ zabbix_version }}-2.amzn2023.noarch.rpm
       {% elif ansible_distribution == "Amazon" and ansible_distribution_major_version == "2" %}
-        https://repo.zabbix.com/zabbix/{{ zabbix_version }}/amazonlinux/2/x86_64/zabbix-release-latest-{{ zabbix_version }}.amzn2.noarch.rpm
+        https://repo.zabbix.com/zabbix/{{ zabbix_version }}/amazonlinux/2/x86_64/zabbix-release-{{ zabbix_version }}-2.amzn2.noarch.rpm
       {% else %}
         ""
       {% endif %}
 
+- name: Baixar repositório Ubuntu
+  get_url:
+    url: "{{ repo_url }}"
+    dest: /tmp/zabbix-release.deb
+  when: ansible_distribution == "Ubuntu"
+
 - name: Instalar repositório Ubuntu
   apt:
-    deb: "{{ repo_url }}"
+    deb: /tmp/zabbix-release.deb
   when: ansible_distribution == "Ubuntu"
 
 - name: Instalar repositório Amazon
