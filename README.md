@@ -12,6 +12,14 @@ Instalação automatizada do Zabbix Agent 2 para instâncias EC2.
 ## Como Usar
 
 1. Acesse a instância EC2 via SSM
+* Para instancias Ubuntu
+```bash
+sudo apt update && apt install -y git
+```
+* Para instancias Amazon Linux
+```bash
+sudo yum update -Y && yum install -y git
+```
 2. Clone o repositório:
 ```bash
 git clone git@github.com:SuporteKXC/kxc-zabbix.git kxc-zabbix
