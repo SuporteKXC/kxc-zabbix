@@ -28,10 +28,17 @@
     deb: /tmp/zabbix-release.deb
   when: ansible_distribution == "Ubuntu"
 
+- name: Baixar repositório Amazon
+  get_url:
+    url: "{{ repo_url }}"
+    dest: /tmp/zabbix-release.rpm
+  when: ansible_distribution == "Amazon"
+
 - name: Instalar repositório Amazon
   yum:
-    name: "{{ repo_url }}"
+    name: /tmp/zabbix-release.rpm
     state: present
+    disable_gpg_check: yes
   when: ansible_distribution == "Amazon"
 
 - name: Atualizar cache
