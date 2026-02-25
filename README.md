@@ -22,10 +22,9 @@ sudo yum update -Y && yum install -y git
 ```
 2. Clone o repositório:
 ```bash
-git clone git@github.com:SuporteKXC/kxc-zabbix.git kxc-zabbix
+git clone https://github.com/SuporteKXC/kxc-zabbix.git
 cd kxc-zabbix
 ```
-
 3. Execute o script:
 ```bash
 chmod +x deploy.sh
